@@ -1,4 +1,4 @@
-module MiniRPGComm
+module github.com/bmader23/MiniRPGRPC
 
 go 1.23.2
 
