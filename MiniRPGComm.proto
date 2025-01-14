@@ -1,5 +1,5 @@
 
-option go_package = "./MiniRPGComm;";
+option go_package = ".github.com/bmader23/MiniRPGRPC/MiniRPGComm;";
 
 service MiniRPGComm{
     rpc GetIntroduction(introductionRequest)returns(introductionResponse){}
