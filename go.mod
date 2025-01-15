@@ -1,4 +1,4 @@
-module github.com/bmader23/MiniRPGRPC
+module github.com/bmader23/MiniRPGRPC.git
 
 go 1.23.2
 
