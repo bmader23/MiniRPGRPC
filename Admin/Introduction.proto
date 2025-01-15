@@ -1,9 +1,8 @@
 
-option go_package = ".github.com/bmader23/MiniRPGRPC/MiniRPGComm;";
+option go_package = ".github.com/bmader23/MiniRPGRPC/Introduction;";
 
-service MiniRPGComm{
+service Introduction{
     rpc GetIntroduction(introductionRequest)returns(introductionResponse){}
-    rpc SetInput(input)returns(playerState){}
 }
 
 message introductionRequest{
@@ -14,13 +13,4 @@ message introductionRequest{
 message introductionResponse{
     required string username = 1;
     required string message = 2;
-}
-
-message input{
-    required int32 value = 1;
-}
-
-message playerState{
-    required int64 x = 1;
-    required int64 y = 2;
 }
