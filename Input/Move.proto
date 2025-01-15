@@ -1,11 +1,11 @@
 
-option go_package = ".github.com/bmader23/MiniRPGRPC/Move;";
+option go_package = ".github.com/bmader23/MiniRPGRPC/Input;";
 
 service Move{
-    rpc SetMove(input)returns(player){}
+    rpc SetMove(input)returns(state){}
 }
 
-message player{
+message state{
     required int64 x = 1;
     required int64 y = 2;
 }
