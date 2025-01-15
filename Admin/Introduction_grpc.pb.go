@@ -4,7 +4,7 @@
 // - protoc             v5.29.1
 // source: Admin/Introduction.proto
 
-package Introduction
+package Admin
 
 import (
 	context "context"

@@ -4,7 +4,7 @@
 // - protoc             v5.29.1
 // source: Input/Move.proto
 
-package Move
+package Input
 
 import (
 	context "context"
@@ -26,7 +26,7 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type MoveClient interface {
-	SetMove(ctx context.Context, in *Input, opts ...grpc.CallOption) (*Player, error)
+	SetMove(ctx context.Context, in *Input, opts ...grpc.CallOption) (*State, error)
 }
 
 type moveClient struct {
@@ -37,9 +37,9 @@ func NewMoveClient(cc grpc.ClientConnInterface) MoveClient {
 	return &moveClient{cc}
 }
 
-func (c *moveClient) SetMove(ctx context.Context, in *Input, opts ...grpc.CallOption) (*Player, error) {
+func (c *moveClient) SetMove(ctx context.Context, in *Input, opts ...grpc.CallOption) (*State, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(Player)
+	out := new(State)
 	err := c.cc.Invoke(ctx, Move_SetMove_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -51,7 +51,7 @@ func (c *moveClient) SetMove(ctx context.Context, in *Input, opts ...grpc.CallOp
 // All implementations should embed UnimplementedMoveServer
 // for forward compatibility.
 type MoveServer interface {
-	SetMove(context.Context, *Input) (*Player, error)
+	SetMove(context.Context, *Input) (*State, error)
 }
 
 // UnimplementedMoveServer should be embedded to have
@@ -61,7 +61,7 @@ type MoveServer interface {
 // pointer dereference when methods are called.
 type UnimplementedMoveServer struct{}
 
-func (UnimplementedMoveServer) SetMove(context.Context, *Input) (*Player, error) {
+func (UnimplementedMoveServer) SetMove(context.Context, *Input) (*State, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SetMove not implemented")
 }
 func (UnimplementedMoveServer) testEmbeddedByValue() {}
